@@ -1,0 +1,3 @@
+#.gitignore
+assets/
+protected/config/main.php

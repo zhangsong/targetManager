@@ -17,14 +17,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->textField($model,'type'); ?>
+		<?php echo $form->dropDownlist($model,'type', array('0'=>'顶级项目', '1'=>'子项目')); ?>
 		<?php echo $form->error($model,'type'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'ctime'); ?>
-		<?php echo $form->textField($model,'ctime'); ?>
-		<?php echo $form->error($model,'ctime'); ?>
 	</div>
 
 	<div class="row">
@@ -35,7 +29,7 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fid'); ?>
-		<?php echo $form->textField($model,'fid'); ?>
+		<?php echo $form->dropDownlist($model,'fid', $model->level_data); ?>
 		<?php echo $form->error($model,'fid'); ?>
 	</div>
 

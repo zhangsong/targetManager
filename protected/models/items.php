@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 
 /**
  * This is the model class for table "items".
@@ -66,11 +66,11 @@ class items extends CActiveRecord
 	{
 		return array(
 			'id' => 'ID',
-			'name' => 'Name',
-			'type' => 'Type',
+			'name' => '条目名称',
+			'type' => '类型',
 			'ctime' => 'Ctime',
-			'remark' => 'Remark',
-			'fid' => 'Fid',
+			'remark' => '备注',
+			'fid' => '所属关系',
 		);
 	}
 
@@ -88,7 +88,7 @@ class items extends CActiveRecord
 		$criteria->compare('id',$this->id);
 		$criteria->compare('name',$this->name,true);
 		$criteria->compare('type',$this->type);
-		$criteria->compare('ctime',$this->ctime);
+		//$criteria->compare('ctime',date('Y-m-d', $this->ctime));
 		$criteria->compare('remark',$this->remark,true);
 		$criteria->compare('fid',$this->fid);
 
@@ -96,4 +96,30 @@ class items extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+	
+	
+	public $level_data = array();
+	
+	//创建关系列表
+	public function createRelList($fid = 0, $level = 0) {
+		$level_result = $this->findAllByAttributes(array('fid'=>$fid));
+		
+		foreach ($level_result as $result) {
+			//has 结果集
+			$res = $this->findAllByAttributes(array('fid'=>$result->id));
+			$result->name = $level . $result->name;
+			$this->level_data[$result->id] = $result->name;
+			
+			
+			if (count($res)>0) {
+				$this->createRelList($result->id, ++$level);
+			} else {
+				
+			}
+			
+		}
+		//$a = $this->findByPk(1);
+		//var_dump(count($a));
+	}
+	
 }

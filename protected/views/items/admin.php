@@ -45,7 +45,10 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id',
 		'name',
 		'type',
-		'ctime',
+		array(
+			'name'=>'ctime',
+			'value'=>'date("Y-m-d H:i:s", $data->ctime)',
+		),
 		'remark',
 		'fid',
 		array(

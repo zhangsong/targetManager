@@ -10,6 +10,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Create items</h1>
+<h1>创建条目</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model)); ?>

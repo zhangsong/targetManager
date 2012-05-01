@@ -63,11 +63,17 @@ class ItemsController extends Controller
 	{
 		$model=new items;
 
+		$model->createRelList();
+		
+		//$this->render('options', $model->level_data);
+		
+		var_dump(count($model->level_data));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['items']))
 		{
+			$_POST['items']['ctime'] = time();
 			$model->attributes=$_POST['items'];
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id));
@@ -75,6 +81,7 @@ class ItemsController extends Controller
 
 		$this->render('create',array(
 			'model'=>$model,
+			'options'=>$model->level_data,
 		));
 	}
 

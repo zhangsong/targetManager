@@ -14,3 +14,24 @@
 the <a href="http://www.yiiframework.com/doc/">documentation</a>.
 Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
 should you have any questions.</p>
+<script type="text/javascript">
+	$(function(){
+		$('li:has(ul)')
+			.click(function(event){
+				if (this == event.target) {
+					$(this).children().toggle();
+				}
+				return false;
+			})
+			.css('cursor', 'pointer')
+			.click()
+			.children().hide();
+	});
+
+
+</script>
+
+<fieldset>
+	<legend>真是</legend>
+	<?php echo $showlist; ?>
+</fieldset>

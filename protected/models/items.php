@@ -100,15 +100,20 @@ class items extends CActiveRecord
 	
 	public $level_data = array();
 	
+	public $show_list = '';
+	
 	//创建关系列表
 	public function createRelList($fid = 0, $level = 0, $pSub='') {
 		$level_result = $this->findAllByAttributes(array('fid'=>$fid));
+		
+		$this->show_list .='<ul>';
 		
 		$cSub = $pSub . '|-';//当前 前缀
 		foreach ($level_result as $result) {
 			//has 结果集
 			$res = $this->findAllByAttributes(array('fid'=>$result->id));
 			//$result->name = $level . $result->name;
+			$this->show_list .='<li>' .$result->name;
 			$result->name = $cSub . $result->name;
 			$this->level_data[$result->id] = $result->name;
 			
@@ -120,7 +125,11 @@ class items extends CActiveRecord
 				
 			}
 			
+			$this->show_list .='</li>';
+			
 		}
+		
+		$this->show_list .='</ul>';
 		//$a = $this->findByPk(1);
 		//var_dump(count($a));
 	}

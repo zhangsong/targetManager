@@ -27,9 +27,13 @@ class SiteController extends Controller
 	 */
 	public function actionIndex()
 	{
+		$model=new items;
+
+		$model->createRelList();
+		Yii::app()->clientScript->registerCoreScript('jquery');
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		$this->render('index');
+		$this->render('index', array('showlist'=>$model->show_list));
 	}
 
 	/**

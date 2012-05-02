@@ -67,12 +67,17 @@ class ItemsController extends Controller
 		
 		//$this->render('options', $model->level_data);
 		
-		var_dump(count($model->level_data));
+		//var_dump(count($model->level_data));
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['items']))
 		{
+			if ('0' == $_POST['items']['type']) {
+			
+				$_POST['items']['fid'] = 0;
+			}
+		
 			$_POST['items']['ctime'] = time();
 			$model->attributes=$_POST['items'];
 			if($model->save())

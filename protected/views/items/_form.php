@@ -17,20 +17,20 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'type'); ?>
-		<?php echo $form->dropDownlist($model,'type', array('0'=>'顶级项目', '1'=>'子项目')); ?>
+		<?php echo $form->dropDownlist($model,'type', array('1'=>'子项目', '0'=>'顶级项目')); ?>
 		<?php echo $form->error($model,'type'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'remark'); ?>
-		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
-		<?php echo $form->error($model,'remark'); ?>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'fid'); ?>
 		<?php echo $form->dropDownlist($model,'fid', $model->level_data); ?>
 		<?php echo $form->error($model,'fid'); ?>
+	</div>
+	
+	<div class="row">
+		<?php echo $form->labelEx($model,'remark'); ?>
+		<?php echo $form->textArea($model,'remark',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->error($model,'remark'); ?>
 	</div>
 
 	<div class="row buttons">

@@ -68,7 +68,7 @@ class items extends CActiveRecord
 			'id' => 'ID',
 			'name' => '条目名称',
 			'type' => '类型',
-			'ctime' => 'Ctime',
+			'ctime' => '创建时间',
 			'remark' => '备注',
 			'fid' => '所属关系',
 		);
@@ -101,18 +101,21 @@ class items extends CActiveRecord
 	public $level_data = array();
 	
 	//创建关系列表
-	public function createRelList($fid = 0, $level = 0) {
+	public function createRelList($fid = 0, $level = 0, $pSub='') {
 		$level_result = $this->findAllByAttributes(array('fid'=>$fid));
 		
+		$cSub = $pSub . '|-';//当前 前缀
 		foreach ($level_result as $result) {
 			//has 结果集
 			$res = $this->findAllByAttributes(array('fid'=>$result->id));
-			$result->name = $level . $result->name;
+			//$result->name = $level . $result->name;
+			$result->name = $cSub . $result->name;
 			$this->level_data[$result->id] = $result->name;
 			
 			
 			if (count($res)>0) {
-				$this->createRelList($result->id, ++$level);
+				$nSub = '| ' . $pSub;
+				$this->createRelList($result->id, ++$level, $nSub);
 			} else {
 				
 			}

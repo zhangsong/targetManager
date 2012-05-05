@@ -113,7 +113,7 @@ class items extends CActiveRecord
 			//has 结果集
 			$res = $this->findAllByAttributes(array('fid'=>$result->id));
 			//$result->name = $level . $result->name;
-			$this->show_list .='<li>' .$result->name;
+			$this->show_list .='<li title="'. $result->remark.'">' .$result->name;
 			$result->name = $cSub . $result->name;
 			$this->level_data[$result->id] = $result->name;
 			

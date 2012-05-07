@@ -21,7 +21,11 @@ $this->menu=array(
 		'id',
 		'name',
 		'type',
-		'ctime',
+		'ctime:datetime',
+		array(
+			'name'=>'ctime',
+			'value'=>date("Y-m-d H:i:s", $model->ctime),
+		),
 		'remark',
 		'fid',
 	),

@@ -13,7 +13,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ctime')); ?>:</b>
-	<?php echo CHtml::encode($data->ctime); ?>
+	<?php echo CHtml::encode(date('Y-m-d H:i:s', $data->ctime)); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('remark')); ?>:</b>

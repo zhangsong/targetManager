@@ -9,7 +9,7 @@
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('type')); ?>:</b>
-	<?php echo CHtml::encode($data->type); ?>
+	<?php $types = array('1'=>'子项目', '0'=>'顶级项目'); echo CHtml::encode($types[$data->type]); ?>
 	<br />
 
 	<b><?php echo CHtml::encode($data->getAttributeLabel('ctime')); ?>:</b>

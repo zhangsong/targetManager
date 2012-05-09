@@ -2,18 +2,8 @@
 
 <h1><i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+<p>欢迎使用本软件，期待大家的建议以及合作完善！</p>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <tt><?php echo __FILE__; ?></tt></li>
-	<li>Layout file: <tt><?php echo $this->getLayoutFile('main'); ?></tt></li>
-</ul>
-
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
 <script type="text/javascript">
 	$(function(){
 		$('li:has(ul)')
@@ -32,6 +22,6 @@ should you have any questions.</p>
 </script>
 
 <fieldset>
-	<legend>真是</legend>
+	<legend>蓝图</legend>
 	<?php echo $showlist; ?>
 </fieldset>

@@ -98,7 +98,7 @@ class ItemsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$model->createRelList();
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
@@ -123,9 +123,13 @@ class ItemsController extends Controller
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+		
+			
 			// we only allow deletion via POST request
-			$this->loadModel($id)->delete();
-
+			//$model = $this->loadModel($id)->delete();
+			$model = $this->loadModel($id);
+			$model->attributes = array('fid'=>-1);
+			$model->save();
 			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
